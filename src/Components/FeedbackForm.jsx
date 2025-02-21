@@ -1,55 +1,54 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import './FeedbackForm.css';
-
-
 const FeedbackForm = () => {
+
   const [form, setForm] = useState({
     name: '',
-    email:'',
-    feedback:'',
+    email: '',
+    feedback: ''
   });
+
   const handleInput = (e) => {
-    const {name, value} = e.target;
-    setForm({
-      ...form, [name] :value
-    })
+      const {name, value} = e.target;
+      setForm({
+         ...form, [name] :value
+      });
   };
+  
+  const handleSubmmit = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = (e) =>{
-     e.preventDefault();
-     const message = `
-     Name: ${form.name},
-     Email: ${form.email},
-     FeedBack: ${form.feedback},
-     `;
+    const message = `
+    Name: ${form.name},
+    Email: ${form.email},
+    Feedback: ${form.feedback}
+    `;
 
-     const ismessage = window.confirm(`Validate your message!! \n\n${message}`);
-     if(ismessage){
+    const ismessage = window.confirm(`Please Check your detail!! \n\n${message}`);
+    if(ismessage){
       setForm({
         name: '',
         email: '',
-        feedback: '',
+        feedback: ''
       });
-
-      alert('Submitted successfully!!');
-     }
-  };
+      alert('submmited');
+    }
+  }
   return (
     <>
-       <nav>
-        Tell Us What You Think
-       </nav>
-        <form action="" className="feedback-form" onSubmit={handleSubmit}>
+        <nav>
+          Hi, There!!
+        </nav>
+        <form className="feedback-form" onSubmit={handleSubmmit}>
         <h2>We'd Love to Hear From You!</h2>
         <p>Please share your feedback with us.</p>
-        
-        <input type="text" name="name" placeholder='enter your name' value={form.name} onChange={handleInput}/>
-        <input type="email" name="email" placeholder='enter your email' value={form.email} onChange={handleInput}/>
-        <textarea name="feedback" placeholder='enter your message' value={form.feedback} onChange={handleInput}/>
+        <input type="text" name="name" placeholder='enter your name' value={form.name} onChange={handleInput} required />
+        <input type="email" name="email" placeholder='enter your name' value={form.email} onChange={handleInput} required />
+        <textarea name="feedback" placeholder='please enter your message!' value={form.feedback} onChange={handleInput} required/>
 
-        <button type="submit">Submit</button>
+        <button type="submit" >Submit</button>
         </form>
-        
+
         
     </>
   )
