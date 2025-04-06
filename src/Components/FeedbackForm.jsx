@@ -41,7 +41,7 @@ const FeedbackForm = () => {
        
        <input type="text" name="name" id="name" placeholder="ente'r you'r name" value={form.name} onChange={handleinput}  required/>
        <input type="email" name="email" id="email" placeholder="ente'r your email" value={form.name} onChange={handleinput} required/>
-       <textarea name="feedback" id="feedback" className="feedback" />
+       <textarea name="feedback" id="feedback" className="feedback" placeholder="ente'r your message"/>
         
         <button type="submit">Submit</button>
        </form>
