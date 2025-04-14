@@ -1,56 +1,55 @@
-import React,{ useState } from 'react';
+import React,{useState} from 'react';
 import './FeedbackForm.css';
 const FeedbackForm = () => {
-  
-  const [form, setForm] = useState({ name: '', email: '', feedback: ''});
-  
-  const handleinput = (e) =>{
+   
+  const [formData, setformData] = useState({ name:'', email:'', feedback:''});
+
+  const handleInput = (e) => {
     const {name, value} = e.target;
-    setForm({
-      ...form, [name] : value
-    })
-  };
+    setformData({
+      ...formData, [name] :value
+    });
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault(e);
-     const confirmationmsg = `
-     Name: ${form.name},
-     Email: ${form.email},
-     Feedback: ${form.feedback},
-     `;
+    e.preventDefault();
 
-     const isconfirm = window.confirm(`Please check your detail! \n\n${confirmationmsg}`);
-     if (isconfirm){
-      setForm({
-        name: '',
-        email: '',
-        feedback: '',
+    const confirmationMessage = `
+    Name: ${formData.name},
+    Email: ${formData.email},
+    Feedback: ${formData.feedback}
+    `;
+
+    const isMessage = window.confirm(`Please Check your detail. \n\n${confirmationMessage}`);
+    if(isMessage){
+      setformData({
+        name:'',
+        email:'',
+        feedback:'',
       })
-     }
-     alert('submitted!')
+    }
+    alert('your feedback submitted!!');
+    
   }
   return (
-    <>
-       <nav>
-       Tell Us What You Think
-       </nav>
+  <>
+     <nav>
+      Tell Us What do you think
+     </nav>
 
-       <form action="" className="feedback-form" onChange={handleSubmit}>
-       <h2>We'd Love to Hear From You!</h2>
-       <p>Please share your feedback with us.</p>
-       
-       <input type="text" name="name" id="name" placeholder="ente'r you'r name" value={form.name} onChange={handleinput}  required/>
-       <input type="email" name="email" id="email" placeholder="ente'r your email" value={form.name} onChange={handleinput} required/>
-       <textarea name="feedback" id="feedback" className="feedback" placeholder="ente'r your message"/>
-        
-        <button type="submit">Submit</button>
-       </form>
-    </>
+     <form  className="feedback-form">
+     <h2>We'd Love to Hear From You!</h2>
+     <p>Please share your feedback with us.</p>
+     <input type="text" name="name" id="name" placeholder="enter your name" value={formData.name} onChange={handleInput} required/>
+     <input type="email" name="email" id="email" placeholder='enter your email' value={formData.email} onChange={handleInput} required/>
+     <textarea name="feedback" id="feedback" value={formData.feedback} onChange={handleInput} required/>
+     <button type="submit">Submit</button>
+     </form>
+  </>
   )
 }
 
 export default FeedbackForm
-
 /*import React, { useState } from 'react';
 import './FeedbackForm.css'; // Import CSS for styling
 
