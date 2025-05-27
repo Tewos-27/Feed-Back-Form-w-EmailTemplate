@@ -103,3 +103,52 @@ nav {
   text-align: center;
   border-bottom: 2px solid #388e3c;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.modal pre {
+  text-align: left;
+  background: #f9f9f9;
+  padding: 1rem;
+  margin: 1rem 0;
+  white-space: pre-wrap;
+}
+
+.modal-buttons button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-buttons button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.modal-buttons button:last-child {
+  background-color: #f44336;
+  color: white;
+}
