@@ -24,7 +24,8 @@ const FeedbackForm = () => {
     Email: ${form.email},
     Feedback: ${form.feedback}
     `;
-
+// The confirmationMessage variable is constructed to display the user's input in a formatted string, which will be shown in the confirmation dialog.
+// The window.confirm method is used to display a confirmation dialog with the constructed message, asking the user to check their details before submission.
     const isconfirm = window.confirm(`please check youre detail \n\n${confirmationMessage}`);
     if(isconfirm){
       setForm({
