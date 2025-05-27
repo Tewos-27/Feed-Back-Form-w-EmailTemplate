@@ -15,6 +15,8 @@ const FeedbackForm = () => {
       [name]: value
     });
   };
+  // handleSubmit function to handle form submission
+  // It prevents the default form submission behavior, constructs a confirmation message with the form data, and prompts the user to confirm their details. If confirmed, it resets the form fields and alerts the user that their feedback has been submitted.
   const handleSubmit = (e) => {
     e.preventDefault();
     const confirmationMessage = `
