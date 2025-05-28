@@ -1,59 +1,58 @@
-import React,{useState} from 'react';
-import './FeedbackForm.css';
+import React,{ useState } from 'react';
+import './FeedbackForm.css'; 
+
 const FeedbackForm = () => {
 
-  const [form, setForm] = useState({
+  const [formdata, setFormData] = useState({
     name:'',
     email:'',
     feedback:''
   });
-  
-  const handlInput = (e) => {
+
+  const handleChange = (e) => {
     const {name, value} = e.target;
-    setForm({
-      ...form,
-      [name]: value
-    });
-  };
-  // handleSubmit function to handle form submission
-  // It prevents the default form submission behavior, constructs a confirmation message with the form data, and prompts the user to confirm their details. If confirmed, it resets the form fields and alerts the user that their feedback has been submitted.
+    setFormData({
+      ...formdata, [name]: value
+    })
+  }
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const confirmationMessage = `
-    Name: ${form.name},
-    Email: ${form.email},
-    Feedback: ${form.feedback}
-    `;
-// The confirmationMessage variable is constructed to display the user's input in a formatted string, which will be shown in the confirmation dialog.
-// The window.confirm method is used to display a confirmation dialog with the constructed message, asking the user to check their details before submission.
-    const isconfirm = window.confirm(`please check youre detail \n\n${confirmationMessage}`);
-    if(isconfirm){
-      setForm({
-        name:'',
-        email:'',
-        feedback:''
+   e.preventDefault();
+   const confirmMessage = `
+   Name: ${formdata.name},
+   Email: ${formdata.email},
+   Feedback: ${formdata.feedback}
+   `;
+
+   const isConfirm = window.confirm(`Please confirm you'r details: \n\n${confirmMessage}`);
+   if(isConfirm){
+      console.log('Submitting feedback:', formdata);
+      setFormData({
+        name: '',
+        email: '',
+        feedback: ''
       });
-    }
-    alert('submitted');
+      alert('Thank you for your valuable feedback!');
+   }
   }
   return (
     <>
     <nav>
-      Tell US What You Think!
+      <h2>Tell Us What You Think</h2>
     </nav>
+
     <form  className="feedback-form" onSubmit={handleSubmit}>
-      <h2>We'd Love to Hear From You!</h2>  
+      <h2>We'd Love to Hear From You!</h2>
       <p>Please share your feedback with us.</p>
-
-      <input type="text" name="name" id="name" placeholder="enter you'r name" value={form.name} onChange={handlInput} required />
-      <input type="email" name="email" id="email" placeholder="enter you'r email" value={form.email} onChange={handlInput} required/>
-      <textarea name="feedback" id="feedback" placeholder="please enter you'r feedback" value={form.feedback} onChange={handlInput} required/>
-
+      
+      <input type="text" name="name" id="name" placeholder="enter you'r name" onChange={handleChange} value={formdata.name} required />
+      <input type="email" name="email" id="email" placeholder="enter your Email" value={formdata.email} required/>
+      <textarea name="feedback" id="feedback" placeholder="Enter your message" value={formdata.feedback} required/>
       <button type="submit">Submit</button>
     </form>
     </>
   )
 }
+
 export default FeedbackForm
 
 /*import React, { useState } from 'react';
