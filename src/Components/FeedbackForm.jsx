@@ -45,14 +45,13 @@ const FeedbackForm = () => {
       <p>Please share your feedback with us.</p>
       
       <input type="text" name="name" id="name" placeholder="enter you'r name" onChange={handleChange} value={formdata.name} required />
-      <input type="email" name="email" id="email" placeholder="enter your Email" value={formdata.email} required/>
-      <textarea name="feedback" id="feedback" placeholder="Enter your message" value={formdata.feedback} required/>
+      <input type="email" name="email" id="email" placeholder="enter your Email" onChange={handleChange} value={formdata.email} required/>
+      <textarea name="feedback" id="feedback" placeholder="Enter your message" onChange={handleChange} value={formdata.feedback} required/>
       <button type="submit">Submit</button>
     </form>
     </>
   )
 }
-
 export default FeedbackForm
 
 /*import React, { useState } from 'react';
