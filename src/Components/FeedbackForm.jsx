@@ -8,6 +8,7 @@ const FeedbackForm = () => {
     email:'',
     feedback:''
   });
+// This function handles the change in input fields
 
   const handleChange = (e) => {
     const {name, value} = e.target;
@@ -15,6 +16,8 @@ const FeedbackForm = () => {
       ...formdata, [name]: value
     })
   }
+  // This function handles the form submission
+  // It prevents the default form submission behavior, confirms the user's details, and resets the form if confirmed
   const handleSubmit = (e) => {
    e.preventDefault();
    const confirmMessage = `
